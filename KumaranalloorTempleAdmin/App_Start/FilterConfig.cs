@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace KumaranalloorTempleAdmin
+namespace kumaranalloordevitempleadminweb
 {
     public class FilterConfig
     {

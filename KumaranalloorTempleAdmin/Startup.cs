@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(KumaranalloorTempleAdmin.Startup))]
-namespace KumaranalloorTempleAdmin
+[assembly: OwinStartupAttribute(typeof(kumaranalloordevitempleadminweb.Startup))]
+namespace kumaranalloordevitempleadminweb
 {
     public partial class Startup
     {

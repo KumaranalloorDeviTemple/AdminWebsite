@@ -1,0 +1,3 @@
+C:\Users\Sreeraj Rajan\Documents\GitHub\KumaranalloorDeviTemple\AdminWebsite\KumaranalloorTempleAdmin\obj\Debug\kumaranalloordevitempleadminweb.csprojResolveAssemblyReference.cache
+C:\Users\Sreeraj Rajan\Documents\GitHub\KumaranalloorDeviTemple\AdminWebsite\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.dll
+C:\Users\Sreeraj Rajan\Documents\GitHub\KumaranalloorDeviTemple\AdminWebsite\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.pdb

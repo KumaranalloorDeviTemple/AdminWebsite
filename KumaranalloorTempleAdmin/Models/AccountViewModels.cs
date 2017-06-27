@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace KumaranalloorTempleAdmin.Models
+namespace kumaranalloordevitempleadminweb.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -79,6 +79,15 @@ namespace KumaranalloorTempleAdmin.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Auth Key")]
+        public string AuthKey { get; set; }
+
+        [Required]
+        [Display(Name = "Pair Key")]
+        [DataType(DataType.Password)]
+        public string PairKey { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -108,5 +117,14 @@ namespace KumaranalloorTempleAdmin.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Auth Key")]
+        public string AuthKey { get; set; }
+
+        [Required]
+        [Display(Name = "Pair Key")]
+        [DataType(DataType.Password)]
+        public string PairKey { get; set; }
     }
 }

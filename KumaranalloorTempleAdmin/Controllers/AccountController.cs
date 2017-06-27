@@ -8,9 +8,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using KumaranalloorTempleAdmin.Models;
+using kumaranalloordevitempleadminweb.Models;
+using System.Web.Security;
+using kumaranalloordevitempleadminweb.Common;
 
-namespace KumaranalloorTempleAdmin.Controllers
+namespace kumaranalloordevitempleadminweb.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -72,9 +74,6 @@ namespace KumaranalloorTempleAdmin.Controllers
             {
                 return View(model);
             }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -115,11 +114,6 @@ namespace KumaranalloorTempleAdmin.Controllers
             {
                 return View(model);
             }
-
-            // The following code protects for brute force attacks against the two factor codes. 
-            // If a user enters incorrect codes for a specified amount of time then the user account 
-            // will be locked out for a specified amount of time. 
-            // You can configure the account lockout settings in IdentityConfig
             var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
@@ -151,21 +145,26 @@ namespace KumaranalloorTempleAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                AuthKeyPairKeyValidator akpvLogin = new AuthKeyPairKeyValidator();
+                if (akpvLogin.validateAuthKeyPairKey(model.AuthKey, model.PairKey))
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        //////await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        //////return RedirectToAction("Index", "Home");
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                        // Send an email with this link
+                        var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code });
+                        EmailServices eMailSvc = new EmailServices();
+                        await eMailSvc.SendEmailAsync(model.Email, "Kumaranalloor Devi Temple - Confirm your account.","Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                        //await SignInManager.SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
                 }
-                AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
@@ -202,19 +201,16 @@ namespace KumaranalloorTempleAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                AuthKeyPairKeyValidator akpvLogin = new AuthKeyPairKeyValidator();
+                if (akpvLogin.validateAuthKeyPairKey(model.AuthKey, model.PairKey))
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
+                    var user = await UserManager.FindByNameAsync(model.Email);
+                    if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                    {
+                        // Don't reveal that the user does not exist or is not confirmed
+                        return View("ForgotPasswordConfirmation");
+                    }
                 }
-
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -392,6 +388,9 @@ namespace KumaranalloorTempleAdmin.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.Clear();
+            Session.Abandon();
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

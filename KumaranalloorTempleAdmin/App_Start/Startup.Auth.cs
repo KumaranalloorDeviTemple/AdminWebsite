@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using KumaranalloorTempleAdmin.Models;
+using kumaranalloordevitempleadminweb.Models;
 
-namespace KumaranalloorTempleAdmin
+namespace kumaranalloordevitempleadminweb
 {
     public partial class Startup
     {
@@ -45,6 +45,7 @@ namespace KumaranalloorTempleAdmin
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",

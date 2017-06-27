@@ -1,16 +1,19 @@
-﻿@model KumaranalloorTempleAdmin.Models.RegisterViewModel
+﻿@model kumaranalloordevitempleadminweb.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Register as a user";
 }
-
-<h2>@ViewBag.Title.</h2>
-
+<div style="float:left; width:100%; height:60px;padding-top:10px;">
+    <div style="float:left; width:50%; color:#a82001">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+<hr />
+<br />
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
+    <hr />
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -30,8 +33,20 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.AuthKey, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.AuthKey, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PairKey, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PairKey, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" value="Register" class="btn btn-primary btn-sm" style="width:150px;" /> &nbsp;
         </div>
     </div>
 }

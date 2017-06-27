@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using KumaranalloorTempleAdmin.Models;
+using kumaranalloordevitempleadminweb.Models;
 
-namespace KumaranalloorTempleAdmin.Controllers
+namespace kumaranalloordevitempleadminweb.Controllers
 {
     [Authorize]
     public class ManageController : Controller

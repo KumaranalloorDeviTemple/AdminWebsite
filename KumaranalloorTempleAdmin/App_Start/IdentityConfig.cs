@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using KumaranalloorTempleAdmin.Models;
+using kumaranalloordevitempleadminweb.Models;
 
-namespace KumaranalloorTempleAdmin
+namespace kumaranalloordevitempleadminweb
 {
     public class EmailService : IIdentityMessageService
     {

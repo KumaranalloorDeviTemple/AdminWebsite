@@ -94,3 +94,6 @@ c:\users\srajan\documents\visual studio 2017\Projects\KumaranalloorTempleAdmin\K
 c:\users\srajan\documents\visual studio 2017\Projects\KumaranalloorTempleAdmin\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.csprojResolveAssemblyReference.cache
 c:\users\srajan\documents\visual studio 2017\Projects\KumaranalloorTempleAdmin\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.dll
 c:\users\srajan\documents\visual studio 2017\Projects\KumaranalloorTempleAdmin\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.pdb
+C:\Users\Sreeraj Rajan\Documents\GitHub\KumaranalloorDeviTemple\AdminWebsite\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.csprojResolveAssemblyReference.cache
+C:\Users\Sreeraj Rajan\Documents\GitHub\KumaranalloorDeviTemple\AdminWebsite\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.dll
+C:\Users\Sreeraj Rajan\Documents\GitHub\KumaranalloorDeviTemple\AdminWebsite\KumaranalloorTempleAdmin\obj\Debug\KumaranalloorTempleAdmin.pdb

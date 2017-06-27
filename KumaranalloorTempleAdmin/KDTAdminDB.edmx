@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="kdtadmin3K365Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Diety">
+          <Key>
+            <PropertyRef Name="diety_id" />
+          </Key>
+          <Property Name="diety_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diety_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="notification_id" />
+          </Key>
+          <Property Name="notification_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notification_title" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="notification_description" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="notification_image" Type="image" />
+          <Property Name="date_from" Type="date" />
+          <Property Name="date_to" Type="date" />
+          <Property Name="datetime_updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Vazhipadu">
+          <Key>
+            <PropertyRef Name="vazhipadu_id" />
+          </Key>
+          <Property Name="vazhipadu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diety_id" Type="int" Nullable="false" />
+          <Property Name="offering_name" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="materials_reqd" Type="varchar" MaxLength="4000" />
+          <Property Name="offering_amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="remarks" Type="varchar" MaxLength="4000" />
+          <Property Name="datetime_updated" Type="datetime2" Precision="7" />
+          <Property Name="user_updated" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Vazhipadu_Diety">
+          <End Role="Diety" Type="Self.Diety" Multiplicity="1" />
+          <End Role="Vazhipadu" Type="Self.Vazhipadu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diety">
+              <PropertyRef Name="diety_id" />
+            </Principal>
+            <Dependent Role="Vazhipadu">
+              <PropertyRef Name="diety_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="kdtadmin3K365ModelStoreContainer">
+          <EntitySet Name="Diety" EntityType="Self.Diety" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vazhipadu" EntityType="Self.Vazhipadu" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Vazhipadu_Diety" Association="Self.FK_Vazhipadu_Diety">
+            <End Role="Diety" EntitySet="Diety" />
+            <End Role="Vazhipadu" EntitySet="Vazhipadu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kdtadmin3K365Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="kdtadmin3K365DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dieties" EntityType="kdtadmin3K365Model.Diety" />
+          <EntitySet Name="Vazhipadus" EntityType="kdtadmin3K365Model.Vazhipadu" />
+          <AssociationSet Name="FK_Vazhipadu_Diety" Association="kdtadmin3K365Model.FK_Vazhipadu_Diety">
+            <End Role="Diety" EntitySet="Dieties" />
+            <End Role="Vazhipadu" EntitySet="Vazhipadus" />
+          </AssociationSet>
+          <EntitySet Name="Notifications" EntityType="kdtadmin3K365Model.Notification" />
+        </EntityContainer>
+        <EntityType Name="Diety">
+          <Key>
+            <PropertyRef Name="diety_id" />
+          </Key>
+          <Property Name="diety_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diety_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vazhipadus" Relationship="kdtadmin3K365Model.FK_Vazhipadu_Diety" FromRole="Diety" ToRole="Vazhipadu" />
+        </EntityType>
+        <EntityType Name="Vazhipadu">
+          <Key>
+            <PropertyRef Name="vazhipadu_id" />
+          </Key>
+          <Property Name="vazhipadu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diety_id" Type="Int32" Nullable="false" />
+          <Property Name="offering_name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="materials_reqd" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="offering_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="remarks" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="datetime_updated" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Diety" Relationship="kdtadmin3K365Model.FK_Vazhipadu_Diety" FromRole="Vazhipadu" ToRole="Diety" />
+          <Property Name="user_updated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Vazhipadu_Diety">
+          <End Type="kdtadmin3K365Model.Diety" Role="Diety" Multiplicity="1" />
+          <End Type="kdtadmin3K365Model.Vazhipadu" Role="Vazhipadu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diety">
+              <PropertyRef Name="diety_id" />
+            </Principal>
+            <Dependent Role="Vazhipadu">
+              <PropertyRef Name="diety_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="notification_id" />
+          </Key>
+          <Property Name="notification_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notification_title" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="notification_description" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="notification_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="date_from" Type="DateTime" Precision="0" />
+          <Property Name="date_to" Type="DateTime" Precision="0" />
+          <Property Name="datetime_updated" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kdtadmin3K365ModelStoreContainer" CdmEntityContainer="kdtadmin3K365DBEntities">
+          <EntitySetMapping Name="Dieties">
+            <EntityTypeMapping TypeName="kdtadmin3K365Model.Diety">
+              <MappingFragment StoreEntitySet="Diety">
+                <ScalarProperty Name="diety_name" ColumnName="diety_name" />
+                <ScalarProperty Name="diety_id" ColumnName="diety_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vazhipadus">
+            <EntityTypeMapping TypeName="kdtadmin3K365Model.Vazhipadu">
+              <MappingFragment StoreEntitySet="Vazhipadu">
+                <ScalarProperty Name="user_updated" ColumnName="user_updated" />
+                <ScalarProperty Name="datetime_updated" ColumnName="datetime_updated" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="offering_amount" ColumnName="offering_amount" />
+                <ScalarProperty Name="materials_reqd" ColumnName="materials_reqd" />
+                <ScalarProperty Name="offering_name" ColumnName="offering_name" />
+                <ScalarProperty Name="diety_id" ColumnName="diety_id" />
+                <ScalarProperty Name="vazhipadu_id" ColumnName="vazhipadu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="kdtadmin3K365Model.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="datetime_updated" ColumnName="datetime_updated" />
+                <ScalarProperty Name="date_to" ColumnName="date_to" />
+                <ScalarProperty Name="date_from" ColumnName="date_from" />
+                <ScalarProperty Name="notification_image" ColumnName="notification_image" />
+                <ScalarProperty Name="notification_description" ColumnName="notification_description" />
+                <ScalarProperty Name="notification_title" ColumnName="notification_title" />
+                <ScalarProperty Name="notification_id" ColumnName="notification_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
