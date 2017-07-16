@@ -1,0 +1,69 @@
+﻿@model IEnumerable<KumaranalloorTempleAdmin.Notification>
+
+@{
+    ViewBag.Title = "Notification Details";
+}
+
+<div style="float:left; width:100%; height:60px;">
+    <div style="float:left; width:50%; color:#a82001">
+        <h3>@ViewBag.Title</h3>
+    </div>
+    <div style="float:right; width:50%; text-align:right;padding-top:40px;">
+        @Html.ActionLink("Add new notification details", "Create")
+    </div>
+</div>
+<hr />
+<br />
+
+<table class="table">
+    <tr style="background-color:#ffe036;">
+        <th>
+            @Html.DisplayNameFor(model => model.notification_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notification_description)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.notification_image)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.date_from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_to)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.datetime_updated)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.notification_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notification_description)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.notification_image)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.date_from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_to)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.datetime_updated)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.notification_id }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.notification_id }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.notification_id })
+        </td>
+    </tr>
+}
+
+</table>

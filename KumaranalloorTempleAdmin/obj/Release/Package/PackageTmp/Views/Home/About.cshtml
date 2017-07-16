@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<br />
+<h3>@ViewBag.Title</h3>
+<br />
+<div style="font:normal 10px; color:#a9a9a9;">
+    @foreach (string message in ViewBag.Message)
+    {
+        @Html.Label(message)
+        <br />
+    }
+</div>
+<br />
+

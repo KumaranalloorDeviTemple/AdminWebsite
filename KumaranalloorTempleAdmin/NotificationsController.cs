@@ -1,7 +1,9 @@
-﻿using System;
+﻿using KumaranalloorTempleAdmin;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -23,7 +25,8 @@ namespace kumaranalloordevitempleadminweb
         // GET: Notifications
         public List<Notification> List()
         {
-            return db.Notifications.ToList();
+            return db.Notifications.OrderBy(a => a.date_from).ToList();
+
         }
 
         // GET: Notifications/Details/5
@@ -76,6 +79,7 @@ namespace kumaranalloordevitempleadminweb
             {
                 return HttpNotFound();
             }
+            //notification.date_from = DateTime.ParseExact(notification.date_from.ToString(), "mm/dd/yyyy", CultureInfo.InvariantCulture); ;
             return View(notification);
         }
 
@@ -84,7 +88,7 @@ namespace kumaranalloordevitempleadminweb
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "notification_title,notification_description,date_from,date_to")] Notification notification)
+        public ActionResult Edit([Bind(Include = "notification_id,notification_title,notification_description,date_from,date_to")] Notification notification)
         {
             if (ModelState.IsValid)
             {

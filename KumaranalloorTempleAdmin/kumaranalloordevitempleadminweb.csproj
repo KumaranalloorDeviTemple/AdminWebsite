@@ -207,6 +207,7 @@
     <Compile Include="Common\EmailServices.cs" />
     <Compile Include="Common\PagedList.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\kdtpublicController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="Notification.cs">
       <DependentUpon>KDTAdminDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="EventsController.cs" />
     <Compile Include="NotificationsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -253,6 +255,7 @@
       <DependentUpon>KDTAdminDB.tt</DependentUpon>
     </Compile>
     <Compile Include="VazhipaduController.cs" />
+    <Compile Include="Views\Events.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datetimepicker.css">
@@ -325,7 +328,6 @@
     <Content Include="Scripts\npm.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="XMLFile1.xml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -420,8 +422,8 @@
     <Content Include="Content\bootstrap-theme.css.map">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\kumaranalloordevitempleadmin - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\kumaranalloordevitempleadminweb - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -509,6 +511,11 @@
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

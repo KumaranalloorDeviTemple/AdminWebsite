@@ -1,0 +1,67 @@
+﻿@model KumaranalloorTempleAdmin.Notification
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Notification</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.notification_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notification_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notification_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notification_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notification_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notification_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datetime_updated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datetime_updated)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.notification_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

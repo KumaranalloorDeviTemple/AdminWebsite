@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kdtadmin3K365Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Diety">
+    <Key>
+      <PropertyRef Name="diety_id" />
+    </Key>
+    <Property Name="diety_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="diety_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="notification_id" />
+    </Key>
+    <Property Name="notification_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="notification_title" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="notification_description" Type="varchar" MaxLength="8000" Nullable="false" />
+    <Property Name="notification_image" Type="image" />
+    <Property Name="date_from" Type="date" />
+    <Property Name="date_to" Type="date" />
+    <Property Name="datetime_updated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Vazhipadu">
+    <Key>
+      <PropertyRef Name="vazhipadu_id" />
+    </Key>
+    <Property Name="vazhipadu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="diety_id" Type="int" Nullable="false" />
+    <Property Name="offering_name" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="materials_reqd" Type="varchar" MaxLength="4000" />
+    <Property Name="offering_amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="remarks" Type="varchar" MaxLength="4000" />
+    <Property Name="datetime_updated" Type="datetime2" Precision="7" />
+    <Property Name="user_updated" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Vazhipadu_Diety">
+    <End Role="Diety" Type="Self.Diety" Multiplicity="1" />
+    <End Role="Vazhipadu" Type="Self.Vazhipadu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diety">
+        <PropertyRef Name="diety_id" />
+      </Principal>
+      <Dependent Role="Vazhipadu">
+        <PropertyRef Name="diety_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="kdtadmin3K365ModelStoreContainer">
+    <EntitySet Name="Diety" EntityType="Self.Diety" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vazhipadu" EntityType="Self.Vazhipadu" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Vazhipadu_Diety" Association="Self.FK_Vazhipadu_Diety">
+      <End Role="Diety" EntitySet="Diety" />
+      <End Role="Vazhipadu" EntitySet="Vazhipadu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

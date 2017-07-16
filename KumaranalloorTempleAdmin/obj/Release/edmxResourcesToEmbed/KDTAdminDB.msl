@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kdtadmin3K365ModelStoreContainer" CdmEntityContainer="kdtadmin3K365DBEntities">
+    <EntitySetMapping Name="Dieties">
+      <EntityTypeMapping TypeName="kdtadmin3K365Model.Diety">
+        <MappingFragment StoreEntitySet="Diety">
+          <ScalarProperty Name="diety_name" ColumnName="diety_name" />
+          <ScalarProperty Name="diety_id" ColumnName="diety_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vazhipadus">
+      <EntityTypeMapping TypeName="kdtadmin3K365Model.Vazhipadu">
+        <MappingFragment StoreEntitySet="Vazhipadu">
+          <ScalarProperty Name="user_updated" ColumnName="user_updated" />
+          <ScalarProperty Name="datetime_updated" ColumnName="datetime_updated" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="offering_amount" ColumnName="offering_amount" />
+          <ScalarProperty Name="materials_reqd" ColumnName="materials_reqd" />
+          <ScalarProperty Name="offering_name" ColumnName="offering_name" />
+          <ScalarProperty Name="diety_id" ColumnName="diety_id" />
+          <ScalarProperty Name="vazhipadu_id" ColumnName="vazhipadu_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="kdtadmin3K365Model.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="datetime_updated" ColumnName="datetime_updated" />
+          <ScalarProperty Name="date_to" ColumnName="date_to" />
+          <ScalarProperty Name="date_from" ColumnName="date_from" />
+          <ScalarProperty Name="notification_image" ColumnName="notification_image" />
+          <ScalarProperty Name="notification_description" ColumnName="notification_description" />
+          <ScalarProperty Name="notification_title" ColumnName="notification_title" />
+          <ScalarProperty Name="notification_id" ColumnName="notification_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

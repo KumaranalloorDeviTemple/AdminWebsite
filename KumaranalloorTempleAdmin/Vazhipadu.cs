@@ -9,9 +9,12 @@
 
 namespace KumaranalloorTempleAdmin
 {
+    using kumaranalloordevitempleadminweb;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(VazhipaduMetadata))]
     public partial class Vazhipadu
     {
         public int vazhipadu_id { get; set; }

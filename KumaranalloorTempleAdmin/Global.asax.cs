@@ -24,8 +24,8 @@ namespace kumaranalloordevitempleadminweb
 
             ControllerBuilder.Current.DefaultNamespaces.Add("kumaranalloordevitempleadminweb.Controllers");
 
-            GlobalConfiguration.Configuration.Formatters.Clear();
-            GlobalConfiguration.Configuration.Formatters.Add(new XmlMediaTypeFormatter());
+            //GlobalConfiguration.Configuration.Formatters.Clear();
+            //GlobalConfiguration.Configuration.Formatters.Add(new XmlMediaTypeFormatter());
 
             //config.Formatters.JsonFormatter
             //            .SerializerSettings

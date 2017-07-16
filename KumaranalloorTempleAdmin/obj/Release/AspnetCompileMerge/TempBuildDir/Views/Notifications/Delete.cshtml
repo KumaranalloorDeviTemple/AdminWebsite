@@ -1,0 +1,60 @@
+﻿@model KumaranalloorTempleAdmin.Notification
+
+@{
+    ViewBag.Title = "Delete Notification Details";
+}
+
+<div style="float:left; width:100%; height:60px;padding-top:10px;">
+    <div style="float:left; width:50%; color:#a82001">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+
+<hr />
+<br />
+
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        <h5 style="color:#ff0000; padding-left:20px;">Are you sure you want to delete this?</h5>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.notification_title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="padding-top:7px;">
+            @Html.DisplayFor(model => model.notification_title, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.notification_description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="padding-top:7px;">
+            @Html.DisplayFor(model => model.notification_description, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.date_from, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="padding-top:7px;">
+            @Html.DisplayFor(model => model.date_from, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.date_to, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="padding-top:7px;">
+            @Html.DisplayFor(model => model.date_to, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+            {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm" style="width:150px;" /> &nbsp; | &nbsp; @Html.ActionLink("Back to Notification List", "Index")
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<KumaranalloorTempleAdmin.Vazhipadu>
+
+@{
+    ViewBag.Title = "Vazhipadu Details";
+}
+    
+<div style="float:left; width:100%; height:60px;">
+    <div style="float:left; width:50%; color:#a82001">
+        <h3>@ViewBag.Title</h3>
+    </div>
+    <div style="float:right; width:50%; text-align:right;padding-top:40px;">
+        @Html.ActionLink("Add new vazhipadu details", "Create")
+    </div>
+</div>
+<hr />
+<br />
+
+<table class="table">
+    <tr style="background-color:#ffe036;">
+        <th>
+            @Html.DisplayNameFor(model => model.offering_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.materials_reqd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.offering_amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diety.diety_name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.offering_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.materials_reqd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.offering_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diety.diety_name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.vazhipadu_id }) |
+                @*@Html.ActionLink("Details", "Details", new { id=item.vazhipadu_id }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.vazhipadu_id })
+            </td>
+        </tr>
+    }
+</table>

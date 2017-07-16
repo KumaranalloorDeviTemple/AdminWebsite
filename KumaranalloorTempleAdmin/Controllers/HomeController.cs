@@ -30,6 +30,12 @@ namespace kumaranalloordevitempleadminweb.Controllers
             return View();
         }
 
+        public ActionResult Events()
+        {
+            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+
         // About 
         public ActionResult About()
         {

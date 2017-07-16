@@ -1,0 +1,58 @@
+﻿@model KumaranalloorTempleAdmin.Vazhipadu
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vazhipadu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.offering_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.offering_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.materials_reqd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.materials_reqd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.offering_amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.offering_amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diety.diety_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diety.diety_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vazhipadu_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
