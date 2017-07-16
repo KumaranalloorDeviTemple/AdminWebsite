@@ -24,11 +24,31 @@ namespace kumaranalloordevitempleadminweb.Controllers
             {
                 Vazhipadu2ViewModel vmVazhipadu = new Vazhipadu2ViewModel();
                 vmVazhipadu.diety_name = vazhipadu.Diety.diety_name;
-                vmVazhipadu.offering_name = vazhipadu.offering_name;
-                vmVazhipadu.materials_reqd = vazhipadu.materials_reqd;
+                if (vazhipadu.offering_name != null)
+                {
+                    vmVazhipadu.offering_name = vazhipadu.offering_name;
+                }
+                else
+                {
+                    vmVazhipadu.offering_name = "-";
+                }
+                if (vazhipadu.materials_reqd != null)
+                {
+                    vmVazhipadu.materials_reqd = vazhipadu.materials_reqd;
+                }
+                else
+                {
+                    vmVazhipadu.materials_reqd = "-";
+                }
                 vmVazhipadu.offering_amount = vazhipadu.offering_amount;
-                vmVazhipadu.remarks = vazhipadu.remarks;
-
+                if (vazhipadu.remarks != null)
+                {
+                    vmVazhipadu.remarks = vazhipadu.remarks;
+                }
+                else
+                {
+                    vmVazhipadu.remarks = "-";
+                }
                 lstVazhipaduVMResults.Add(vmVazhipadu);
             }
             return lstVazhipaduVMResults;
